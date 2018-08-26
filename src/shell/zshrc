@@ -1,0 +1,20 @@
+DOTFILES=$HOME/.dotfiles
+DOTFILES_SHELL=$DOTFILES/src/shell
+ZSH=$DOTFILES_SHELL/oh-my-zsh
+ZSH_THEME="hyperzsh"
+ZSH_CUSTOM=$DOTFILES_SHELL/zsh
+
+# Source custom functions
+source $DOTFILES_SHELL/zsh/functions/*.zsh
+
+# Plugins list
+plugins=(zsh-syntax-highlighting zsh-autosuggestions zsh-better-npm-completion zsh-nvm brew brew-cask git node npm vscode yarn)
+
+# Source Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+
+# OPAM configuration
+. /Users/rodolphe/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
