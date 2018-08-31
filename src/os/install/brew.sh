@@ -115,6 +115,10 @@ brew_install "Postman" "postman" "caskroom/cask" "cask"
 print_in_blue "\n   Brews - Optimisations\n\n"
 brew_install "ImageOptim" "imageoptim" "caskroom/cask" "cask"
 
+# Fonts
+print_in_blue "\n   Brews - Fonts\n\n"
+brew_install "Fira Code" "font-fira-code" "caskroom/fonts" "cask"
+
 # YARN
 if [ -d "$HOME/.nvm" ]; then
     print_in_blue "\n   Brews - Node\n\n"
