@@ -5,6 +5,9 @@ print_in_blue "\n   UI & UX\n\n"
 execute "osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to true'" \
    "Use dark menu bar and Dock"
 
+execute "osascript -e 'tell application \"Finder\" to set desktop picture to POSIX file \"$HOME/Library/Mobile Documents/com~apple~CloudDocs/Background/Solid Blue Petrol.png\"'" \
+   "Set destop background color"
+
 execute "defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true && \
          defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true" \
    "Avoid creating '.DS_Store' files on network or USB volumes"
