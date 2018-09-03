@@ -93,11 +93,13 @@ execute "sudo systemsetup -setrestartfreeze on" \
 #     "Turn Bluetooth off"
 
 execute "for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-            sudo defaults write \"\${domain}\" dontAutoLoad -array \
+            defaults write \"\${domain}\" dontAutoLoad -array \
                 '/System/Library/CoreServices/Menu Extras/TimeMachine.menu' \
-                '/System/Library/CoreServices/Menu Extras/Volume.menu'
+                '/System/Library/CoreServices/Menu Extras/Volume.menu' \
+                '/System/Library/CoreServices/Menu Extras/Clock.menu' \
+                '/System/Library/CoreServices/Menu Extras/Battery.menu'
          done \
-            && sudo defaults write com.apple.systemuiserver menuExtras -array \
+            && defaults write com.apple.systemuiserver menuExtras -array \
                 '/System/Library/CoreServices/Menu Extras/Bluetooth.menu' \
                 '/System/Library/CoreServices/Menu Extras/AirPort.menu'
         " \
