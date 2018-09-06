@@ -52,7 +52,11 @@ main() {
 
     print_in_blue "\n   Mac App Store\n\n"
 
-    install_mas
+    ask_for_confirmation "Do you want to install applications?"
+    if answer_is_yes; then
+        printf "\n"
+        install_mas
+    fi
 
 }
 
