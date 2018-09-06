@@ -22,3 +22,6 @@
 	path = src/shell/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
     ignore = dirty
+[submodule "src/shell/zsh/themes/src/shell/zsh/themes/spaceship-prompt"]
+	path = src/shell/zsh/themes/src/shell/zsh/themes/spaceship-prompt
+	url = https://github.com/denysdovhan/spaceship-prompt.git

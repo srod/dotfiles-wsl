@@ -68,6 +68,7 @@ brew_install "SubsMarine" "subsmarine" "caskroom/cask" "cask"
 print_in_blue "\n   Brews - Terminal\n\n"
 brew_install "Hyper" "hyper" "caskroom/cask" "cask"
 #brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
+brew_install "ZSH Completions" "zsh-completions"
 
 # Unarchivers
 print_in_blue "\n   Brews - Unarchivers\n\n"
@@ -117,7 +118,9 @@ brew_install "ImageOptim" "imageoptim" "caskroom/cask" "cask"
 
 # Fonts
 print_in_blue "\n   Brews - Fonts\n\n"
-brew_install "Fira Code" "font-fira-code" "caskroom/fonts" "cask"
+# brew_install "Fira Code" "font-fira-code" "caskroom/fonts" "cask"
+# brew_install "Fira Code Nerd" "font-firacode-nerd-font-mono" "caskroom/fonts" "cask"
+brew_install "Hack Nerd" "font-hack-nerd-font-mono" "caskroom/fonts" "cask"
 
 # YARN
 if [ -d "$HOME/.nvm" ]; then
