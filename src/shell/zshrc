@@ -8,7 +8,12 @@ ZSH_CUSTOM=$DOTFILES_SHELL/zsh
 source $DOTFILES_SHELL/zsh/functions/*.zsh
 
 # Plugins list
-plugins=(zsh-syntax-highlighting zsh-autosuggestions zsh-better-npm-completion zsh-nvm brew brew-cask git node npm vscode yarn)
+plugins=(zsh-autosuggestions zsh-better-npm-completion zsh-nvm zsh-syntax-highlighting history-substring-search jsontools sudo urltools web-search brew brew-cask git node npm vscode yarn)
+
+# Setup plugin `history-substring-search`
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # Source Oh My Zsh
 source $ZSH/oh-my-zsh.sh
