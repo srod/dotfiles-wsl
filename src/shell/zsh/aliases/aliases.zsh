@@ -55,6 +55,7 @@ alias network.httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\
 
 # SSH
 alias connect.usg="ssh 192.168.1.1"
+alias connect.key="ssh 192.168.1.2"
 alias connect.nas="ssh 192.168.1.6"
 
 # MAC
@@ -69,7 +70,9 @@ alias hide.hidden="defaults write com.apple.finder AppleShowAllFiles NO && killa
 
 # Utils
 alias clean.ds_store="find . -type f -name '*.DS_Store' -ls -delete"
-alias clean.npm="rm -rf node_modules/ && npm cache verify && npm install"
+alias clean.node="rm -rf node_modules"
+alias clean.npm="clean.node && npm cache verify && npm install"
+alias clean.yarn="clean.node && yarn"
 alias dropbox.conflicted="find ~/Dropbox/ -name '*Copie en conflit*' && find ~/Dropbox/ -name '*Conflict*' && find ~/Dropbox/ -name '*conflict*'"
 alias json="python -mjson.tool"
 alias updatedb="sudo /usr/libexec/locate.updatedb"
