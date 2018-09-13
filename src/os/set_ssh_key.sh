@@ -36,7 +36,11 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    set_ssh_key
+    local pub=$HOME/.ssh/id_rsa.pub
+
+    if ! [[ -f $pub ]]; then
+        set_ssh_key
+    fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

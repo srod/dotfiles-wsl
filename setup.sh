@@ -30,6 +30,13 @@ are_xcode_command_line_tools_installed() {
     xcode-select --print-path &> /dev/null
 }
 
+check_internet_connection() {
+    if [ ping -q -w1 -c1 google.com &>/dev/null ]; then
+        printf "Please check your internet connection";
+        exit 0
+    fi
+}
+
 download() {
 
     local url="$1"
@@ -142,6 +149,10 @@ main() {
 
     cd "$(dirname "${BASH_SOURCE[0]}")" \
         || exit 1
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    check_internet_connection
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
