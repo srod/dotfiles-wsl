@@ -11,3 +11,5 @@ export NVM_DIR="$HOME/.nvm"
 
 export EDITOR='Code'
 export HOMEBREW_NO_ANALYTICS=1
+
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"

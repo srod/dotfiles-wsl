@@ -2,14 +2,19 @@
 
 # System
 print_in_blue "\n   Brews - System\n\n"
+brew_install "Bat" "bat"
 brew_install "Coreutils" "coreutils"
 brew_install "Curl" "curl --with-nghttp2"
+brew_install "Diff-so-fancy" "diff-so-fancy"
 brew_install "Findutils" "findutils"
+brew_install "Fd" "fd"
 brew_install "Git" "git"
 #brew_install "GPG" "gpg"
 brew_install "Grep" "grep --with-default-names"
 brew_install "Mac App Store" "mas"
+brew_install "Ncdu" "ncdu"
 # brew_install "Neofetch" "neofetch"
+brew_install "Prettyping" "prettyping"
 brew_install "Python 2" "python@2"
 brew_install "Python 3" "python@3"
 brew_install "Vim" "vim --with-override-system-vi"
@@ -102,6 +107,7 @@ brew_install "Slate" "slate" "caskroom/cask" "cask"
 # Development
 print_in_blue "\n   Brews - Development\n\n"
 brew_install "Postman" "postman" "caskroom/cask" "cask"
+brew_install "Insomnia" "insomnia" "caskroom/cask" "cask"
 
 # Capture
 #print_in_blue "\n   Brews - Capture\n\n"

@@ -7,6 +7,9 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias vi="/usr/local/bin/vim"
 alias vim="/usr/local/bin/vim"
+alias cat="bat"
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 
 # Navigation
 alias cdf="cd `osascript -e 'tell application \"Finder\" to if window 1 exists then if target of window 1 as string is not \":\" then get POSIX path of (target of window 1 as alias)'`"
@@ -20,18 +23,20 @@ alias check-space="du -h ~/ | grep '^[0-9]*.[0-9]G'"
 alias sizedir="du -sh */ | sort -h"
 alias pid="ps x | grep -i $1"
 alias grep="grep --color=auto"
+alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
 
 # Update
 alias brewup="brew update; brew upgrade; brew cleanup; brew cu -y"
 alias gemup="gem update --system; gem update; gem cleanup"
-alias opamup="opam update; opam upgrade"
+# alias opamup="opam update; opam upgrade"
 alias npmup="npm -g update; npm install -g npm"
 alias sysup="sudo softwareupdate -i -a"
-alias update="brewup; gemup; opamup; npmup; sysup"
+alias update="brewup; gemup; npmup; sysup"
 
 # Work
 alias work="cd ~/Dropbox/www"
 alias work.2clics="cd ~/Dropbox/www/www.2clics.net"
+alias work.minify="cd ~/Dropbox/www/minify.2clics.net"
 alias work.node-minify="cd ~/Dropbox/www/github/node-minify"
 alias work.node-version="cd ~/Dropbox/www/github/node-version"
 
@@ -40,7 +45,8 @@ alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias network.iplocal="ipconfig getifaddr en0"
 alias network.ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 alias network.speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-alias network.ping="ping -c 5" # ping 5 times by default
+# alias network.ping="ping -c 5" # ping 5 times by default
+alias network.ping='prettyping --nolegend'
 alias ping=network.ping
 
 # Show active network interfaces
