@@ -2,8 +2,8 @@
 #export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_144`
 #export JAVA_HOME=`/usr/libexec/java_home -v 1.6.0_65-b14-468`
 
-export LC_ALL=fr_FR.UTF-8
-export LANG=fr_FR.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
