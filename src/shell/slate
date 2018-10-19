@@ -27,8 +27,8 @@ bind p:${hyper} ${bottomright}
 
 bind h:cmd focus 'Hyper'
 bind g:cmd focus 'Google Chrome'
-//bind b:cmd focus 'Brave'
-bind b:cmd focus 'Safari'
+bind b:cmd focus 'Brave Browser'
+//bind b:cmd focus 'Safari'
 //bind j:cmd focus 'PhpStorm'
 //bind j:cmd focus 'WebStorm'
 bind j:cmd focus 'Code'
