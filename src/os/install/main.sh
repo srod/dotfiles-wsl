@@ -11,5 +11,4 @@ source install/npm.sh
 source install/mas.sh
 source install/ruby.sh
 source install/gem.sh
-# source install/opam.sh
 source install/cleanup.sh
