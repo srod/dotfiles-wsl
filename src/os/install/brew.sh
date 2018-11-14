@@ -50,8 +50,8 @@ print_in_blue "\n   Brews - Instagram\n\n"
 brew_install "Flume" "flume" "caskroom/cask" "cask"
 
 # Java
-print_in_blue "\n   Brews - Java\n\n"
-brew_install "Java" "java" "caskroom/cask" "cask"
+#print_in_blue "\n   Brews - Java\n\n"
+#brew_install "Java" "java" "caskroom/cask" "cask"
 
 # Password Manager
 print_in_blue "\n   Brews - Password Manager\n\n"
