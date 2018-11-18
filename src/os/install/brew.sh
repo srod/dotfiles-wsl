@@ -22,7 +22,7 @@ brew_install "Wget" "wget --with-iri"
 
 # Browsers
 print_in_blue "\n   Brews - Browsers\n\n"
-#brew_install "Brave" "brave" "caskroom/cask" "cask"
+brew_install "Brave" "brave" "caskroom/cask" "cask"
 brew_install "Chrome" "google-chrome" "caskroom/cask" "cask"
 #brew_install "Firefox" "firefox" "caskroom/cask" "cask"
 
