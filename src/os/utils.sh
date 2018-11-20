@@ -81,19 +81,22 @@ brew_install() {
             print_error "$FORMULA_READABLE_NAME ('brew tap $TAP_VALUE' failed)"
             return 1
         fi
+        print_success "$TAP_VALUE"
     fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Install the specified formula.
 
-    # shellcheck disable=SC2086
-    if brew $CMD list "$FORMULA" &> /dev/null; then
-        print_success "$FORMULA_READABLE_NAME"
-    else
-        execute \
-            "brew $CMD install $FORMULA $CMD_ARGUMENTS" \
-            "$FORMULA_READABLE_NAME"
+    if [ -n "$FORMULA" ]; then
+        # shellcheck disable=SC2086
+        if brew $CMD list "$FORMULA" &> /dev/null; then
+            print_success "$FORMULA_READABLE_NAME"
+        else
+            execute \
+                "brew $CMD install $FORMULA $CMD_ARGUMENTS" \
+                "$FORMULA_READABLE_NAME"
+        fi
     fi
 
 }
