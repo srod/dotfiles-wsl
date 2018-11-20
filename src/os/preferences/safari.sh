@@ -8,19 +8,16 @@ execute "defaults write com.apple.Safari AutoOpenSafeDownloads -bool false" \
 execute "defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true" \
     "Set backspace key to go to the previous page in history"
 
-# execute "defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
-#          defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
-#          defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true" \
-#     "Enable the 'Develop' menu and the 'Web Inspector'"
+execute "defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
+         defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
+         defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true" \
+    "Enable the 'Develop' menu and the 'Web Inspector'"
 
 execute "defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false" \
     "Set search type to 'Contains' instead of 'Starts With'"
 
-# execute "defaults write com.apple.Safari HomePage -string 'about:blank'" \
-#     "Set home page to 'about:blank'"
-
-# execute "defaults write com.apple.Safari IncludeInternalDebugMenu -bool true" \
-#     "Enable 'Debug' menu"
+execute "defaults write com.apple.Safari HomePage -string 'about:blank'" \
+    "Set home page to 'about:blank'"
 
 execute "defaults write com.apple.Safari ShowFavoritesBar -bool false" \
     "Hide bookmarks bar by default"
@@ -37,9 +34,6 @@ execute "defaults write -g WebKitDeveloperExtras -bool true" \
 
 execute "defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25" \
     "Disable the standard delay in rendering a web page."
-
-# execute "defaults write com.apple.Safari WebContinuousSpellCheckingEnabled -bool true" \
-#     "Enable continuous spellchecking"
 
 execute "defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false" \
     "Disable auto-correct"

@@ -13,11 +13,9 @@ brew_install "Diff-so-fancy" "diff-so-fancy"
 brew_install "Findutils" "findutils"
 brew_install "Fd" "fd"
 brew_install "Git" "git"
-#brew_install "GPG" "gpg"
 brew_install "Grep" "grep --with-default-names"
 brew_install "Mac App Store" "mas"
 brew_install "Ncdu" "ncdu"
-# brew_install "Neofetch" "neofetch"
 brew_install "Prettyping" "prettyping"
 brew_install "Python 2" "python@2"
 brew_install "Python 3" "python@3"
@@ -28,7 +26,7 @@ brew_install "Wget" "wget --with-iri"
 print_in_blue "\n   Brews - Browsers\n\n"
 brew_install "Brave" "brave-browser" "caskroom/cask" "cask"
 brew_install "Chrome" "google-chrome" "caskroom/cask" "cask"
-#brew_install "Firefox" "firefox" "caskroom/cask" "cask"
+brew_install "Firefox" "firefox" "caskroom/cask" "cask"
 
 # Cleaners
 print_in_blue "\n   Brews - Cleaners\n\n"
@@ -47,15 +45,10 @@ brew_install "Keybase" "keybase" "caskroom/cask" "cask"
 print_in_blue "\n   Brews - IDE\n\n"
 brew_install "Sublime Text" "sublime-text" "caskroom/cask" "cask"
 brew_install "Visual Studio Code" "visual-studio-code" "caskroom/cask" "cask"
-#brew_install "Webstorm" "webstorm" "caskroom/cask" "cask"
 
 # Instagram
 print_in_blue "\n   Brews - Instagram\n\n"
 brew_install "Flume" "flume" "caskroom/cask" "cask"
-
-# Java
-#print_in_blue "\n   Brews - Java\n\n"
-#brew_install "Java" "java" "caskroom/cask" "cask"
 
 # Password Manager
 print_in_blue "\n   Brews - Password Manager\n\n"
@@ -76,14 +69,12 @@ brew_install "SubsMarine" "subsmarine" "caskroom/cask" "cask"
 # Terminal
 print_in_blue "\n   Brews - Terminal\n\n"
 brew_install "Hyper" "hyper" "caskroom/cask" "cask"
-#brew_install "iTerm2" "iterm2" "caskroom/cask" "cask"
 brew_install "ZSH Completions" "zsh-completions"
 
 # Unarchivers
 print_in_blue "\n   Brews - Unarchivers\n\n"
 brew_install "Keka" "keka" "caskroom/cask" "cask"
 brew_install "Keka Default App" "kekadefaultapp" "caskroom/cask" "cask"
-# brew_install "The Unarchiver" "the-unarchiver" "caskroom/cask" "cask"
 
 # Usenet
 print_in_blue "\n   Brews - Usenet\n\n"
@@ -105,7 +96,6 @@ brew_install "Tunnelblick" "tunnelblick" "caskroom/cask" "cask"
 
 # Windows Manager
 print_in_blue "\n   Brews - Windows Manager\n\n"
-#brew_install "Cinch" "cinch" "caskroom/cask" "cask"
 brew_install "Slate" "slate" "caskroom/cask" "cask"
 
 # Development

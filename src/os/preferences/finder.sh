@@ -2,11 +2,6 @@
 
 print_in_blue "\n   Finder\n\n"
 
-# execute "defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true && \
-#          defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true && \
-#          defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true" \
-#     "Automatically open a new Finder window when a volume is mounted"
-
 execute "defaults write com.apple.finder _FXShowPosixPathInTitle -bool true" \
     "Use full POSIX path as window title"
 

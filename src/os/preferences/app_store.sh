@@ -2,9 +2,6 @@
 
 print_in_blue "   App Store\n\n"
 
-# execute "defaults write com.apple.appstore ShowDebugMenu -bool true" \
-#     "Enable debug menu"
-
 execute "defaults write com.apple.commerce AutoUpdate -bool true" \
     "Turn on auto-update"
 

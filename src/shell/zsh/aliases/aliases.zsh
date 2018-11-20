@@ -1,5 +1,4 @@
 # Command upgrades
-# alias ll="ls -alh --color"
 alias ll="$(brew --prefix coreutils)/libexec/gnubin/ls -ahlF --color --group-directories-first"
 alias ln="ln -v"
 alias rm="rm -i"
@@ -28,7 +27,6 @@ alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
 # Update
 alias brewup="brew update; brew upgrade; brew cleanup; brew cu -y"
 alias gemup="gem update --system; gem update; gem cleanup"
-# alias opamup="opam update; opam upgrade"
 alias npmup="npm -g update; npm install -g npm"
 alias sysup="sudo softwareupdate -i -a"
 alias update="brewup; gemup; npmup; sysup"
@@ -45,7 +43,6 @@ alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias network.iplocal="ipconfig getifaddr en0"
 alias network.ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 alias network.speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
-# alias network.ping="ping -c 5" # ping 5 times by default
 alias network.ping='prettyping --nolegend'
 alias ping=network.ping
 

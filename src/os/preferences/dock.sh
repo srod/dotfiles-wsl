@@ -17,9 +17,6 @@ execute "defaults write com.apple.dock expose-animation-duration -float 0.1" \
 execute "defaults write com.apple.dock expose-group-by-app -bool true" \
     "Group windows by application in Mission Control"
 
-# execute "defaults write com.apple.dock launchanim -bool false" \
-#     "Disable the opening of an application from the Dock animations."
-
 execute "defaults write com.apple.dock mineffect -string 'scale'" \
     "Change minimize/maximize window effect"
 
