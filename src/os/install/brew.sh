@@ -54,6 +54,10 @@ brew_install "Flume" "flume" "caskroom/cask" "cask"
 print_in_blue "\n   Brews - Password Manager\n\n"
 brew_install "1password" "1password" "caskroom/cask" "cask"
 
+# PDF
+print_in_blue "\n   Brews - PDF\n\n"
+brew_install "PDFelement" "pdfelement" "caskroom/cask" "cask"
+
 # Security
 print_in_blue "\n   Brews - Security\n\n"
 brew_install "Authy" "authy" "caskroom/cask" "cask"
