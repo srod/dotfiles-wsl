@@ -61,7 +61,6 @@ brew_install "PDFelement" "pdfelement" "caskroom/cask" "cask"
 # Security
 print_in_blue "\n   Brews - Security\n\n"
 brew_install "Authy" "authy" "caskroom/cask" "cask"
-brew_install "Avast Security" "avast-security" "caskroom/cask" "cask"
 brew_install "GPG Suite" "gpg-suite" "caskroom/cask" "cask"
 brew_install "Micro Snitch" "micro-snitch" "caskroom/cask" "cask"
 brew_install "Oversight" "oversight" "caskroom/cask" "cask"
@@ -105,7 +104,6 @@ brew_install "Slate" "slate" "caskroom/cask" "cask"
 # Development
 print_in_blue "\n   Brews - Development\n\n"
 brew_install "Postman" "postman" "caskroom/cask" "cask"
-brew_install "Insomnia" "insomnia" "caskroom/cask" "cask"
 
 # Capture
 #print_in_blue "\n   Brews - Capture\n\n"
