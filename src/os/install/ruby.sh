@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -r RUBY_VERSION="2.5.1"
+declare -r RUBY_VERSION="2.5.5"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
