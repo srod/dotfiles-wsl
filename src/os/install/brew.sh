@@ -47,8 +47,8 @@ brew_install "Sublime Text" "sublime-text" "caskroom/cask" "cask"
 brew_install "Visual Studio Code" "visual-studio-code" "caskroom/cask" "cask"
 
 # Instagram
-print_in_blue "\n   Brews - Instagram\n\n"
-brew_install "Flume" "flume" "caskroom/cask" "cask"
+#print_in_blue "\n   Brews - Instagram\n\n"
+#brew_install "Flume" "flume" "caskroom/cask" "cask"
 
 # Password Manager
 print_in_blue "\n   Brews - Password Manager\n\n"

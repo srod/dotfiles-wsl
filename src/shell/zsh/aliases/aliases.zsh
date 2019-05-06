@@ -32,11 +32,11 @@ alias sysup="sudo softwareupdate -i -a"
 alias update="brewup; gemup; npmup; sysup"
 
 # Work
-alias work="cd ~/Dropbox/www"
-alias work.2clics="cd ~/Dropbox/www/www.2clics.net"
-alias work.minify="cd ~/Dropbox/www/minify.2clics.net"
-alias work.node-minify="cd ~/Dropbox/www/github/node-minify"
-alias work.node-version="cd ~/Dropbox/www/github/node-version"
+alias work="cd ~/OneDrive/www"
+alias work.2clics="cd ~/OneDrive/www/www.2clics.net"
+alias work.minify="cd ~/OneDrive/www/minify.2clics.net"
+alias work.node-minify="cd ~/OneDrive/www/github/node-minify"
+alias work.node-version="cd ~/OneDrive/www/github/node-version"
 
 # Network
 alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -60,6 +60,8 @@ alias network.httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\
 alias connect.usg="ssh 192.168.1.1"
 alias connect.key="ssh 192.168.1.2"
 alias connect.nas="ssh 192.168.1.6"
+alias connect.pi="ssh 192.168.1.9"
+alias connect.pc="ssh 192.168.1.15"
 
 # MAC
 alias mac.shutdown="osascript -e 'tell application \"System Events\" to shut down'"

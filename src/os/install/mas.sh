@@ -29,10 +29,14 @@ install_mas() {
         fi
 
         execute "mas install 824183456"  "Affinity Photo"
+        execute "mas install 409203825"  "Apple Numbers"
+        execute "mas install 409201541"  "Apple Pages"
         execute "mas install 681812329"  "iCompta"
         execute "mas install 409183694"  "Keynote"
-        execute "mas install 409203825"  "Numbers"
-        execute "mas install 409201541"  "Pages"
+        execute "mas install 462058435"  "Microsoft Excel"
+        execute "mas install 823766827"  "Microsoft One Drive"
+        execute "mas install 462062816"  "Microsoft Powerpoint"
+        execute "mas install 462054704"  "Microsoft Word"
         execute "mas install 568494494"  "Pocket"
         execute "mas install 880001334"  "Reeder"
         execute "mas install 1153157709" "Speedtest"
