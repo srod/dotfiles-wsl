@@ -60,7 +60,7 @@ alias network.httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\
 alias connect.usg="ssh 192.168.1.1"
 alias connect.key="ssh 192.168.1.2"
 alias connect.nas="ssh 192.168.1.6"
-alias connect.pi="ssh 192.168.1.9"
+alias connect.pi="ssh pi@192.168.1.9"
 alias connect.pc="ssh 192.168.1.15"
 
 # MAC

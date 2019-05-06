@@ -26,3 +26,7 @@
 	path = src/shell/zsh/themes/spaceship-prompt
 	url = https://github.com/denysdovhan/spaceship-prompt.git
     ignore = dirty
+[submodule "src/shell/zsh/plugins/zsh-completions"]
+	path = src/shell/zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+    ignore = dirty
