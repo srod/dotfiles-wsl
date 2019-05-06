@@ -125,7 +125,7 @@ print_in_blue "\n   Brews - Fonts\n\n"
 brew_install "Hack Nerd" "font-hack-nerd-font-mono" "caskroom/fonts" "cask"
 
 # YARN
-if [ -d "$HOME/.nvm" ]; then
+if [ -d "$HOME/.n" ]; then
     print_in_blue "\n   Brews - Node\n\n"
     brew_install "Yarn" "yarn" "" "" "--ignore-dependencies"
 fi
