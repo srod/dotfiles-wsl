@@ -1,7 +1,7 @@
 [user]
     name = Rodolphe Stoclin
     email = srodolphe@gmail.com
-    signingkey = C1F0E3A1CDFF052E
+    signingkey = 37C817DE4492623E
 
 [apply]
     # Detect whitespace errors when applying a patch

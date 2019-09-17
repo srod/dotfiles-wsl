@@ -40,100 +40,54 @@ ask_for_sudo() {
 
 }
 
-brew_cleanup() {
+package_install_from_git() {
 
-    # By default Homebrew does not uninstall older versions
-    # of formulas so, in order to remove them, `brew cleanup`
-    # needs to be used.
-    #
-    # https://github.com/Homebrew/brew/blob/496fff643f352b0943095e2b96dbc5e0f565db61/share/doc/homebrew/FAQ.md#how-do-i-uninstall-old-versions-of-a-formula
+    declare -r FORMULA="$2"
+    declare -r FORMULA_READABLE_NAME="$1"
 
-    execute \
-        "brew cleanup" \
-        "Homebrew (cleanup)"
+    if yay -Q "$FORMULA" &> /dev/null; then
+        print_success "$FORMULA_READABLE_NAME"
+    else
+        execute \
+            "cd /tmp && rm -rf $FORMULA && git clone --quiet https://aur.archlinux.org/$FORMULA.git && cd $FORMULA && makepkg -si" \
+            "$FORMULA_READABLE_NAME"
+    fi
 
 }
 
-brew_install() {
+package_install() {
 
-    declare -r CMD="$4"
-    declare -r CMD_ARGUMENTS="$5"
     declare -r FORMULA="$2"
     declare -r FORMULA_READABLE_NAME="$1"
-    declare -r TAP_VALUE="$3"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Check if `Homebrew` is installed.
-
-    if ! cmd_exists "brew"; then
-        print_error "$FORMULA_READABLE_NAME ('Homebrew' is not installed)"
-        return 1
-    fi
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # If `brew tap` needs to be executed,
-    # check if it executed correctly.
-
-    if [ -n "$TAP_VALUE" ]; then
-        if ! brew_tap "$TAP_VALUE"; then
-            print_error "$FORMULA_READABLE_NAME ('brew tap $TAP_VALUE' failed)"
-            return 1
-        fi
-        print_success "$TAP_VALUE"
-    fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Install the specified formula.
 
     if [ -n "$FORMULA" ]; then
-        # shellcheck disable=SC2086
-        if brew $CMD list "$FORMULA" &> /dev/null; then
+        if pacman -Q "$FORMULA" &> /dev/null; then
             print_success "$FORMULA_READABLE_NAME"
         else
             execute \
-                "brew $CMD install $FORMULA $CMD_ARGUMENTS" \
+                "sudo pacman -S --noconfirm --needed $FORMULA" \
                 "$FORMULA_READABLE_NAME"
         fi
     fi
 
 }
 
-brew_prefix() {
+package_uninstall() {
 
-    local path=""
+    declare -r FORMULA="$2"
+    declare -r FORMULA_READABLE_NAME="$1"
 
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    # Uninstall the specified formula.
 
-    if path="$(brew --prefix 2> /dev/null)"; then
-        printf "%s" "$path"
-        return 0
-    else
-        print_error "Homebrew (get prefix)"
-        return 1
+    if [ -n "$FORMULA" ]; then
+        execute \
+            "sudo pacman -Rs $FORMULA" \
+            "$FORMULA_READABLE_NAME"
     fi
-
-}
-
-brew_tap() {
-    brew tap "$1" &> /dev/null
-}
-
-brew_update() {
-
-    execute \
-        "brew update" \
-        "Homebrew (update)"
-
-}
-
-brew_upgrade() {
-
-    execute \
-        "brew upgrade" \
-        "Homebrew (upgrade)"
 
 }
 
@@ -336,5 +290,22 @@ show_spinner() {
         fi
 
     done
+
+}
+
+yay_install() {
+
+    declare -r FORMULA="$2"
+    declare -r FORMULA_READABLE_NAME="$1"
+
+    if [ -n "$FORMULA" ]; then
+        if yay -Q "$FORMULA" &> /dev/null; then
+            print_success "$FORMULA_READABLE_NAME"
+        else
+            execute \
+                "yay -S --noconfirm --needed $FORMULA" \
+                "$FORMULA_READABLE_NAME"
+        fi
+    fi
 
 }

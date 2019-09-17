@@ -15,7 +15,7 @@ SPACESHIP_GIT_BRANCH_COLOR="blue"
 source $DOTFILES_SHELL/zsh/functions/*.zsh
 
 # Plugins list
-plugins=(zsh-completions zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting history-substring-search jsontools sudo urltools web-search brew git node npm vscode yarn)
+plugins=(zsh-completions zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting history-substring-search jsontools sudo urltools web-search git node npm vscode yarn)
 
 # Setup plugin `history-substring-search`
 zmodload zsh/terminfo
@@ -29,7 +29,7 @@ source $ZSH/oh-my-zsh.sh
 #. $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+#export SDKMAN_DIR="$HOME/.sdkman"
+#[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

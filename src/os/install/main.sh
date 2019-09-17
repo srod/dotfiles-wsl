@@ -2,15 +2,10 @@
 
 print_in_blue "\n • Installs\n\n"
 
-source install/xcode.sh
-source install/homebrew.sh
-source install/zsh.sh
-#source install/nvm.sh
-source install/n.sh
-source install/brew.sh
-source install/sdk.sh
-source install/npm.sh
-source install/mas.sh
-source install/ruby.sh
-source install/gem.sh
-source install/cleanup.sh
+source ./src/os/install/zsh.sh
+source ./src/os/install/nvm.sh
+source ./src/os/install/packages.sh
+source ./src/os/install/ruby.sh
+source ./src/os/install/gem.sh
+source ./src/os/install/npm.sh
+source ./src/os/install/cleanup.sh

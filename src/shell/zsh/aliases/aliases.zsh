@@ -1,20 +1,17 @@
 # Command upgrades
-alias ll="$(brew --prefix coreutils)/libexec/gnubin/ls -ahlF --color --group-directories-first"
+alias ll="ls -alh"
 alias ln="ln -v"
 alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
-alias vi="/usr/local/bin/vim"
-alias vim="/usr/local/bin/vim"
-alias cat="bat"
-alias preview="fzf --preview 'bat --color \"always\" {}'"
-alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias vi="/usr/bin/vim"
+#alias cat="bat"
+alias ncdu="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
 
 # Navigation
-alias cdf="cd `osascript -e 'tell application \"Finder\" to if window 1 exists then if target of window 1 as string is not \":\" then get POSIX path of (target of window 1 as alias)'`"
-alias drive="~/Library/Mobile\ Documents/com\~apple\~CloudDocs"
 alias dotfiles="cd $DOTFILES"
-alias library="cd $HOME/Library"
 
 # Maintenance
 alias lsdu="du -csh $(pwd)"
@@ -25,11 +22,11 @@ alias grep="grep --color=auto"
 alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
 
 # Update
-alias brewup="brew update; brew upgrade; brew cleanup; brew cu -y"
-alias gemup="gem update --system; gem update; gem cleanup"
-alias npmup="npm -g update; npm install -g npm"
-alias sysup="sudo softwareupdate -i -a"
-alias update="brewup; gemup; npmup; sysup"
+# alias pacmanup="sudo pacman -Syu"
+# alias gemup="gem update --system; gem update; gem cleanup"
+# alias npmup="npm -g update; npm install -g npm"
+# alias yayup="yay -Syu"
+# alias update="pacmanup; gemup; npmup; yayup"
 
 # Work
 alias work="cd ~/OneDrive/www"
@@ -40,21 +37,18 @@ alias work.node-version="cd ~/OneDrive/www/github/node-version"
 
 # Network
 alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias network.iplocal="ipconfig getifaddr en0"
+#alias network.iplocal="ifconfig getifaddr wlo1"
 alias network.ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 alias network.speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 alias network.ping='prettyping --nolegend'
 alias ping=network.ping
 
-# Show active network interfaces
-alias network.ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-
 # Flush Directory Service cache
-alias network.flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo 'DNS flushed'"
+alias network.flush="sudo nscd -K && sudo nscd && sudo systemd-resolve --flush-caches && echo 'DNS flushed'"
 
 # View HTTP traffic
-alias network.sniff="sudo ngrep -d 'en0' -t '^(GET|POST) ' 'tcp and port 80'"
-alias network.httpdump="sudo tcpdump -i en0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias network.sniff="sudo ngrep -d 'wlo1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias network.httpdump="sudo tcpdump -i wlo1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # SSH
 alias connect.usg="ssh 192.168.1.1"
@@ -63,16 +57,6 @@ alias connect.nas="ssh 192.168.1.6"
 alias connect.pi="ssh pi@192.168.1.9"
 alias connect.pc="ssh 192.168.1.15"
 
-# MAC
-alias mac.shutdown="osascript -e 'tell application \"System Events\" to shut down'"
-alias mac.restart="osascript -e 'tell application \"System Events\" to restart'"
-alias mac.logout="osascript -e 'tell application \"System Events\" to log out'"
-alias mac.sleep="osascript -e 'tell application \"System Events\" to sleep'"
-
-# Show / Hide hidden files
-alias show.hidden="defaults write com.apple.finder AppleShowAllFiles YES && killall 'Finder'"
-alias hide.hidden="defaults write com.apple.finder AppleShowAllFiles NO && killall 'Finder'"
-
 # Utils
 alias clean.ds_store="find . -type f -name '*.DS_Store' -ls -delete"
 alias clean.node="rm -rf node_modules"
@@ -80,10 +64,7 @@ alias clean.npm="clean.node && npm cache verify && npm install"
 alias clean.yarn="clean.node && yarn"
 alias dropbox.conflicted="find ~/Dropbox/ -name '*Copie en conflit*' && find ~/Dropbox/ -name '*Conflict*' && find ~/Dropbox/ -name '*conflict*'"
 alias json="python -mjson.tool"
-alias updatedb="sudo /usr/libexec/locate.updatedb"
-alias copyssh="pbcopy < $HOME/.ssh/id_rsa.pub"
 weather() { curl -4 wttr.in/${1:-charenton} }
-alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"

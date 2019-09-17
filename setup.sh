@@ -1,19 +1,13 @@
 #!/bin/bash
 
 cat <<EOF
-                   _
-  __ _ _ __  _ __ | | ___
- / _  |  _ \|  _ \| |/ _ \\
-| (_| | |_) | |_) | |  __/
- \__,_| .__/| .__/|_|\___|
-      |_|   |_|
 
- macOS Installation Script
+ Arch Linux Installation Script
 
 
 EOF
 
-declare -r GITHUB_REPOSITORY="srod/dotfiles"
+declare -r GITHUB_REPOSITORY="srod/dotfiles-arch"
 
 declare -r DOTFILES_ORIGIN="https://github.com/$GITHUB_REPOSITORY.git"
 declare -r DOTFILES_UTILS_URL="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/master/src/os/utils.sh"
@@ -25,10 +19,6 @@ declare DOTFILES="$HOME/.dotfiles"
 # ----------------------------------------------------------------------
 # | Helper Functions                                                   |
 # ----------------------------------------------------------------------
-
-are_xcode_command_line_tools_installed() {
-    xcode-select --print-path &> /dev/null
-}
 
 check_internet_connection() {
     if [ ping -q -w1 -c1 google.com &>/dev/null ]; then
@@ -73,23 +63,6 @@ download_dotfiles() {
 
     print_in_blue "\n • Clone GitHub repository\n\n"
 
-    if ! are_xcode_command_line_tools_installed; then
-
-        print_in_yellow "   You need the developer tools to be installed\n\n"
-
-        # If necessary, prompt user to install
-        # the `Xcode Command Line Tools`.
-
-        xcode-select --install &> /dev/null
-
-        execute \
-            "until are_xcode_command_line_tools_installed; do \
-                sleep 5; \
-            done" \
-            "Installing..."
-
-    fi
-
     if [ ! -d "$DOTFILES" ]; then
         execute \
             "git clone --quiet --recurse-submodules -j8 $DOTFILES_ORIGIN $DOTFILES" "Cloning in '$DOTFILES'"
@@ -133,7 +106,7 @@ update_system() {
     ask_for_confirmation "Your system must be updated first, do you want to?"
     if answer_is_yes; then
         execute \
-            "sudo softwareupdate -i -a" "Checking updates..."
+            "sudo pacman -Syu" "Checking updates..."
     fi
 
 }
@@ -174,31 +147,31 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    download_dotfiles
+    #download_dotfiles
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source create_symbolic_links.sh
+    source ./src/os/create_symbolic_links.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source create_local_config_files.sh
+    source ./src/os/create_local_config_files.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source install/main.sh
+    source ./src/os/install/main.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source preferences/main.sh
+    #source preferences/main.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source set_ssh_key.sh
+    source ./src/os/set_ssh_key.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source restart.sh
+    #source restart.sh
 
 }
 

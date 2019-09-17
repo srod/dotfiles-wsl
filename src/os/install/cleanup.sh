@@ -2,8 +2,6 @@
 
 print_in_blue "\n   Cleanup\n\n"
 
-brew_cleanup
-
 execute \
     "gem cleanup" \
     "GEM (cleanup)"

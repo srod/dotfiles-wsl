@@ -4,8 +4,6 @@ create_symlinks() {
 
     declare -a FILES_TO_SYMLINK=(
 
-        "shell/hyper.js"
-        "shell/slate"
         "shell/zshrc"
 
         "git/gitconfig"
@@ -24,21 +22,12 @@ create_symlinks() {
 
     for i in "${FILES_TO_SYMLINK[@]}"; do
 
-        sourceFile="$(cd .. && pwd)/$i"
+        sourceFile="$(pwd)/src/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
 
         do_symlink "$sourceFile" "$targetFile"
 
     done
-
-}
-
-create_symlink_sublime_text() {
-
-    sourceFile=$HOME/Dropbox/Applications/Sublime
-    targetFile=$HOME/Library/Application\ Support/Sublime\ Text\ 3
-
-    do_symlink "$sourceFile" "$targetFile"
 
 }
 
@@ -86,8 +75,6 @@ main() {
     print_in_blue "\n • Create symbolic links\n\n"
 
     create_symlinks
-
-    create_symlink_sublime_text
 
 }
 
