@@ -74,65 +74,37 @@ clear
 
 
 
-echo "##########################################################################"
+# echo "##########################################################################"
 
-echo "### Installing needed packages ###"
+# echo "### Installing needed packages ###"
 
-echo "##########################################################################"
-
-
-
-sleep 2
+# echo "##########################################################################"
 
 
 
-sudo pacman -Syyu --noconfirm --needed --asdeps
-
-clear
+# sleep 2
 
 
 
-echo "##########################################################################"
+# sudo pacman -Syyu --noconfirm --needed --asdeps
 
-echo "1. Refresh repo keys"
+# clear
 
-echo "2. Do not refresh repo keys"
+
 
 echo "##########################################################################"
 
+echo "### Refresh repo keys ###"
+
+echo "##########################################################################"
 
 
-read case;
-
-case $case in
-
-1)
 
 echo "Refreshing software repo keys, this will take a while (recommended)"
 
 sudo pacman-key --refresh-keys
 
-;;
-
-2)
-
-echo "No key update performed"
-
-;;
-
-esac
-
 sudo pacman -S --noconfirm --needed --asdeps neofetch git wget linux-headers rsync go htop
-
-git clone https://aur.archlinux.org/yay.git
-
-cd yay
-
-makepkg -si --noconfirm --needed --asdeps
-
-cd ..
-
-rm yay -R -f
 
 clear
 
@@ -271,28 +243,6 @@ clear
 
 echo "################################################################################"
 
-echo "### Installing and setting up printers ###"
-
-echo "################################################################################"
-
-
-
-sleep 2
-
-
-
-sudo pacman -S --noconfirm --needed --asdeps cups cups-pdf ghostscript gsfonts gutenprint gtk3-print-backends libcups hplip system-config-printer
-
-yay -S --noconfirm --needed --asdeps epson-inkjet-printer-201211w
-
-sudo systemctl enable org.cups.cupsd.service
-
-clear
-
-
-
-echo "################################################################################"
-
 echo "### Installing Samba and network sharing ###"
 
 echo "################################################################################"
@@ -316,26 +266,6 @@ sudo pacman -S --noconfirm --needed --asdeps nss-mdns
 sudo sed -i 's/dns/mdns dns wins/g' /etc/nsswitch.conf
 
 
-
-clear
-
-
-
-echo "################################################################################"
-
-echo "### Installing extra fonts ###"
-
-echo "################################################################################"
-
-
-
-sleep 2
-
-
-
-sudo pacman -S --noconfirm --needed --asdeps adobe-source-sans-pro-fonts cantarell-fonts noto-fonts terminus-font ttf-bitstream-vera ttf-dejavu ttf-droid ttf-inconsolata ttf-liberation ttf-roboto ttf-ubuntu-font-family tamsyn-font
-
-yay -S --noconfirm --needed --asdeps ttf-ms-fonts
 
 clear
 
@@ -454,247 +384,15 @@ clear
 
 echo "################################################################################"
 
-echo "### Install and setup display manager and desktop ###"
+echo "### Installing nVidia graphics card ###"
 
 echo "################################################################################"
 
 
-
-sleep 2
-
-
-
-sudo pacman -S --noconfirm --needed --asdeps xorg xorg-drivers xorg-xinit xterm
-
-
-
-clear
-
-echo "################################################################################"
-
-echo "What is your preferred desktop environment"
-
-echo "1) Deepin"
-
-echo "2) Gnome"
-
-echo "3) KDE Plasma"
-
-echo "4) Mate"
-
-echo "5) XFCE4"
-
-echo "6) Budgie"
-
-echo "7) Cinnamon"
-
-echo "8) LXDE"
-
-echo "9) LXQT"
-
-echo "10) i3"
-
-echo "11) None"
-
-echo "################################################################################"
-
-read case;
-
-
-
-case $case in
-
-1)
-
-echo "You selected Deepin"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm deepin deepin-extra gnome-disk-utility lightdm-gtk-greeter-settings
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-2)
-
-echo "You selected Gnome"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter gdm gnome gnome-extra jre8-openjdk jre8-openjdk-headless lightdm-gtk-greeter-settings nautilus-share
-
-yay -S --noconfirm --needed --asdeps meow-bin
-
-#sudo systemctl enable lightdm.service -f
-
-#sudo systemctl set-default graphical.target
-
-sudo systemctl enable gdm
-
-;;
-
-3)
-
-echo "You selected KDE Plasma"
-
-sudo pacman -S --noconfirm --needed --asdeps sddm lightdm lightdm-gtk-greeter plasma kde-applications gnome-disk-utility lightdm-gtk-greeter-settings redshift kvantum-qt5 kvantum-theme-adapta kvantum-theme-arc kvantum-theme-materia
-
-#sudo systemctl enable lightdm.service -f
-
-#sudo systemctl set-default graphical.target
-
-sudo systemctl enable sddm
-
-;;
-
-4)
-
-echo "You selected Mate"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter mate mate-extra gnome-disk-utility lightdm-gtk-greeter-settings
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-5)
-
-echo "You selected XFCE4"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter xfce4 xfce4-goodies gnome-disk-utility galculator lightdm-gtk-greeter-settings ark cairo-dock cairo-dock-plug-ins alacarte
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-6)
-
-echo "You selected Budgie"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter budgie-desktop budgie-extras sakura gnome-system-monitor nemo gnome-disk-utility galculator gnome-control-center gnome-backgrounds lightdm-gtk-greeter-settings
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-7)
-
-echo "You selected Cinnamon"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter cinnamon sakura gnome-disk-utility lightdm-gtk-greeter-settings
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-8)
-
-echo "You selected LXDE"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter lxde gnome-disk-utility lightdm-gtk-greeter-settings
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-9)
-
-echo "You selected LXQT"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter lxqt gnome-disk-utility lightdm-gtk-greeter-settings compton
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-10)
-
-echo "You selected i3"
-
-sudo pacman -S --noconfirm --needed --asdeps lightdm lightdm-gtk-greeter i3 gnome-disk-utility lightdm-gtk-greeter-settings
-
-sudo systemctl enable lightdm.service -f
-
-sudo systemctl set-default graphical.target
-
-;;
-
-11)
-
-echo "You selected none"
-
-;;
-
-esac
-
-
-
-clear
-
-
-
-echo "################################################################################"
-
-echo "### Installing software center ###"
-
-echo "################################################################################"
-
-
-
-sleep 2
-
-
-
-yay -S --noconfirm --needed --asdeps pamac
-
-
-
-clear
-
-echo "################################################################################"
-
-echo "Do you have a nVidia graphics card"
-
-echo "1) Yes"
-
-echo "2) No"
-
-echo "################################################################################"
-
-read case;
-
-
-
-case $case in
-
-1)
-
-echo "You selected Yes"
 
 sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-cg-toolkit nvidia-settings nvidia-utils lib32-nvidia-cg-toolkit lib32-nvidia-utils lib32-opencl-nvidia opencl-nvidia cuda ffnvcodec-headers lib32-libvdpau libxnvctrl pycuda-headers python-pycuda python2-pycuda
 
 sudo pacman -R --noconfirm xf86-video-nouveau
-
-;;
-
-2)
-
-echo "You selected no"
-
-;;
-
-esac
 
 
 
