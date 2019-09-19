@@ -93,6 +93,7 @@ execute \
     "Add rodolphe to vboxusers"
 package_install "Meld" "meld"
 package_install "Unrar" "unrar"
+package_install "PDF Arranger" "pdfarranger"
 
 # Videos
 print_in_blue "\n   Packages - Videos\n\n"

@@ -36,93 +36,17 @@ nc=$(grep -c ^processor /proc/cpuinfo)
 
 
 
-
-
-case $nc in
-
-
-
-16)
-
-echo "You have " $nc" cores."
+echo "You have "$nc" cores."
 
 echo "Changing the makeflags for "$nc" cores."
 
-sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j16"/g' /etc/makepkg.conf
+sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 
 echo "Changing the compression settings for "$nc" cores."
 
-sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 16 -z -)/g' /etc/makepkg.conf
-
-;;
-
-8)
-
-echo "You have " $nc" cores."
-
-echo "Changing the makeflags for "$nc" cores."
-
-sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j8"/g' /etc/makepkg.conf
-
-echo "Changing the compression settings for "$nc" cores."
-
-sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 8 -z -)/g' /etc/makepkg.conf
-
-;;
-
-6)
-
-echo "You have " $nc" cores."
-
-echo "Changing the makeflags for "$nc" cores."
-
-sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j6"/g' /etc/makepkg.conf
-
-echo "Changing the compression settings for "$nc" cores."
-
-sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 6 -z -)/g' /etc/makepkg.conf
-
-;;
-
-4)
-
-echo "You have " $nc" cores."
-
-echo "Changing the makeflags for "$nc" cores."
-
-sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j4"/g' /etc/makepkg.conf
-
-echo "Changing the compression settings for "$nc" cores."
-
-sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 4 -z -)/g' /etc/makepkg.conf
-
-;;
-
-2)
-
-echo "You have " $nc" cores."
-
-echo "Changing the makeflags for "$nc" cores."
-
-sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j2"/g' /etc/makepkg.conf
-
-echo "Changing the compression settings for "$nc" cores."
-
-sudo sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T 2 -z -)/g' /etc/makepkg.conf
-
-;;
-
-*)
-
-echo "We do not know how many cores you have."
-
-echo "Do it manually."
-
-;;
+sudo sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 
 
-
-esac
 
 sleep 2
 
@@ -379,30 +303,6 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps samba
-
-sudo wget "https://git.samba.org/samba.git/?p=samba.git;a=blob_plain;f=examples/smb.conf.default;hb=HEAD" -O /etc/samba/smb.conf
-
-sudo sed -i -r 's/MYGROUP/WORKGROUP/' /etc/samba/smb.conf
-
-sudo sed -i -r "s/Samba Server/$(hostname)/" /etc/samba/smb.conf
-
-sudo systemctl enable smb.service
-
-sudo systemctl start smb.service
-
-sudo systemctl enable nmb.service
-
-sudo systemctl start nmb.service
-
-
-
-#Change your username here
-
-sudo smbpasswd -a $(whoami)
-
-sleep 2
-
 #Access samba share windows
 
 sudo pacman -S --noconfirm --needed --asdeps gvfs-smb avahi
@@ -414,20 +314,6 @@ sudo systemctl start avahi-daemon.service
 sudo pacman -S --noconfirm --needed --asdeps nss-mdns
 
 sudo sed -i 's/dns/mdns dns wins/g' /etc/nsswitch.conf
-
-#Set-up user sharing (disable this section if you dont want user shares)
-
-sudo mkdir -p /var/lib/samba/usershares
-
-sudo groupadd -r sambashare
-
-sudo chown root:sambashare /var/lib/samba/usershares
-
-sudo chmod 1770 /var/lib/samba/usershares
-
-sudo sed -i -r '/\[global\]/a\username path = /var/lib/samba/usershares\nusershare max shares = 100\nusershare allow guests = yes\nusershare owner only = yes' /etc/samba/smb.conf
-
-sudo gpasswd sambashare -a $(whoami)
 
 
 
@@ -467,7 +353,100 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps intel-ucode amd-ucode
+sudo pacman -S --noconfirm --needed --asdeps intel-ucode
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Installing Bootloader ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+sudo sed -i 's/MODULES=()/MODULES=(ext4)/g' /etc/mkinitcpio.conf
+sudo sed -i 's/HOOKS=(base udev autodetect modconf block filesystems/HOOKS=(base udev autodetect modconf block filesystems encrypt lvm2/g' /etc/mkinitcpio.conf
+
+mkinitcpio -p linux
+
+sudo pacman -S --noconfirm --needed --asdeps grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
+
+sudo sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/nvme0n1p6:cryptlvm:allow-discards"/g' /etc/default/grub
+
+mkdir -p /mnt/windows
+mount /dev/nvme0n1p4 /mnt/windows
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Installing Network tools ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+
+pacman -S --noconfirm --needed --asdeps net-tools wireless_tools dialog iw wpa_supplicant
+
+
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Installing Network Manager ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+
+pacman -S --noconfirm --needed --asdeps networkmanager networkmanager-openvpn
+systemctl enable NetworkManager
+
+
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Installing SSD Trim ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+
+systemctl enable fstrim.timer
+
+
 
 clear
 
