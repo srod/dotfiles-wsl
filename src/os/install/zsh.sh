@@ -4,7 +4,7 @@ main() {
 
     print_in_blue "\n   ZSH\n\n"
 
-    sudo pacman -S zsh
+    sudo pacman -S --noconfirm --needed --asdeps zsh
     sudo usermod -s /usr/bin/zsh $(whoami)
 
 }
