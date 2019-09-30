@@ -386,8 +386,6 @@ echo "##########################################################################
 
 sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-cg-toolkit nvidia-settings nvidia-utils opencl-nvidia ffnvcodec-headers
 
-sudo pacman -R --noconfirm xf86-video-nouveau
-
 
 
 clear
