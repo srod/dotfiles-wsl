@@ -112,7 +112,8 @@ sleep 2
 
 sudo pacman -S --noconfirm --needed --asdeps xf86-video-intel mesa xorg-server bumblebee bbswitch-dkms nvidia nvidia-settings primus
 
-sudo gpasswd -a rodolphe bumblebee video
+sudo gpasswd -a rodolphe bumblebee
+sudo gpasswd -a rodolphe video
 
 sudo systemctl enable bumblebeed.service
 
