@@ -110,7 +110,7 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps pacman -S xf86-video-intel mesa xorg-server bumblebee bbswitch-dkms nvidia nvidia-settings primus
+sudo pacman -S --noconfirm --needed --asdeps xf86-video-intel mesa xorg-server bumblebee bbswitch-dkms nvidia nvidia-settings primus
 
 sudo gpasswd -a rodolphe bumblebee video
 
