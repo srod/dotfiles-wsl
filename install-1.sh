@@ -223,7 +223,7 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps pulseaudio-bluetooth bluez bluez-libs bluez-utils bluez-firmware blueberry
+sudo pacman -S --noconfirm --needed --asdeps pulseaudio-bluetooth bluez bluez-libs bluez-utils blueberry
 
 sudo systemctl enable bluetooth.service
 
