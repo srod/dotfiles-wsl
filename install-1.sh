@@ -401,7 +401,7 @@ echo "##########################################################################
 
 
 localectl set-keymap fr
-localectl set-x11-keymap fr
+#localectl set-x11-keymap fr
 
 
 
