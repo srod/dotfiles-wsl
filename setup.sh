@@ -151,15 +151,15 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source ./src/os/create_symbolic_links.sh
+    source ./create_symbolic_links.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source ./src/os/create_local_config_files.sh
+    source ./create_local_config_files.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source ./src/os/install/main.sh
+    source ./install/main.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -167,7 +167,7 @@ main() {
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    source ./src/os/set_ssh_key.sh
+    source ./set_ssh_key.sh
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
