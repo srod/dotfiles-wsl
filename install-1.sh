@@ -74,24 +74,6 @@ clear
 
 
 
-# echo "##########################################################################"
-
-# echo "### Installing needed packages ###"
-
-# echo "##########################################################################"
-
-
-
-# sleep 2
-
-
-
-# sudo pacman -Syyu --noconfirm --needed --asdeps
-
-# clear
-
-
-
 echo "##########################################################################"
 
 echo "### Refresh repo keys ###"
@@ -104,7 +86,7 @@ echo "Refreshing software repo keys, this will take a while (recommended)"
 
 sudo pacman-key --refresh-keys
 
-sudo pacman -S --noconfirm --needed --asdeps neofetch git wget linux-headers rsync go htop
+sudo pacman -S --noconfirm --needed --asdeps git wget linux-headers
 
 clear
 
@@ -122,6 +104,8 @@ sed -i 's/'#en_US.UTF-8'/'en_US.UTF-8'/g' /etc/locale.gen
 
 locale-gen
 
+clear
+
 
 
 echo "##########################################################################"
@@ -134,6 +118,8 @@ echo "##########################################################################
 
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=fr-latin9" > /etc/vconsole.conf
+
+clear
 
 
 
@@ -149,6 +135,8 @@ ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 echo "FallbackNTP=0.pool.ntp.org 1.pool.ntp.org 0.fr.pool.ntp.org" >> /etc/systemd/timesyncd.conf
 systemctl enable systemd-timesyncd.service
 
+clear
+
 
 
 echo "##########################################################################"
@@ -160,6 +148,8 @@ echo "##########################################################################
 
 
 hwclock --systohc
+
+clear
 
 
 
@@ -185,6 +175,8 @@ echo "::1             localhost       ip6-localhost   ip6-loopback" >> /etc/host
 echo "ff02::1         ip6-allnodes" >> /etc/hosts
 echo "ff02::2         ip6-allrouters" >> /etc/hosts
 
+clear
+
 
 
 echo "##########################################################################"
@@ -196,6 +188,8 @@ echo "##########################################################################
 
 
 passwd
+
+clear
 
 
 
@@ -211,7 +205,7 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps pulseaudio pulseaudio-alsa pavucontrol alsa-utils alsa-plugins alsa-lib alsa-firmware lib32-alsa-lib lib32-alsa-oss lib32-alsa-plugins gstreamer gst-plugins-good gst-plugins-bad gst-plugins-base gst-plugins-ugly volumeicon playerctl
+sudo pacman -S --noconfirm --needed --asdeps pulseaudio pulseaudio-alsa pavucontrol alsa-utils alsa-plugins alsa-lib alsa-firmware gstreamer gst-plugins-good gst-plugins-bad gst-plugins-base gst-plugins-ugly volumeicon playerctl
 
 clear
 
@@ -253,7 +247,7 @@ sleep 2
 
 
 
-#Access samba share windows
+# Access samba share windows
 
 sudo pacman -S --noconfirm --needed --asdeps gvfs-smb avahi
 
@@ -390,7 +384,7 @@ echo "##########################################################################
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-cg-toolkit nvidia-settings nvidia-utils lib32-nvidia-cg-toolkit lib32-nvidia-utils lib32-opencl-nvidia opencl-nvidia cuda ffnvcodec-headers lib32-libvdpau libxnvctrl pycuda-headers python-pycuda python2-pycuda
+sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-cg-toolkit nvidia-settings nvidia-utils opencl-nvidia ffnvcodec-headers
 
 sudo pacman -R --noconfirm xf86-video-nouveau
 
@@ -402,9 +396,26 @@ clear
 
 echo "################################################################################"
 
-echo "### Installation completed, please reboot when ready ###"
+echo "### Set locale X11 ###"
 
 echo "################################################################################"
+
+
+
+localectl set-keymap fr
+localectl set-x11-keymap fr
+
+
+
+clear
+
+
+
+echo "######################################################################################"
+
+echo "### Installation completed, please reboot when ready and proceed with install-2.sh ###"
+
+echo "######################################################################################"
 
 
 

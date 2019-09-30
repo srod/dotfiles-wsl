@@ -39,7 +39,7 @@ alias work.node-version="cd ~/OneDrive/www/github/node-version"
 alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
 #alias network.iplocal="ifconfig getifaddr wlo1"
 alias network.ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
-alias network.speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+alias network.speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python - --server 24215"
 alias network.ping='prettyping --nolegend'
 alias ping=network.ping
 

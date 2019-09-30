@@ -20,13 +20,15 @@ yay_install "Extfat" "sdfat-dkms"
 yay_install "Exfat utils" "exfat-utils-nofuse"
 package_install "Discover backend" "packagekit-qt5"
 package_install "Xclip" "xclip"
+package_install "Neofetch" "neofetch"
+package_install "Htop" "htop"
+package_install "Ntfs-3g" "ntfs-3g"
 
 # Thunderbolt
 package_install "Bolt" "bolt"
 execute \
     "sudo systemctl start bolt.service" \
     "Enable bolt service"
-yay_install "Plasma Thunderbolt" "plasma-thunderbolt-git"
 
 # Network
 print_in_blue "\n   Packages - Network\n\n"
@@ -113,6 +115,10 @@ package_install "TTF Liberation" "ttf-liberation"
 package_install "Noto Fonts" "noto-fonts"
 package_install "TTF Lato" "ttf-lato"
 package_install "Emoji" "noto-fonts-emoji"
+package_install "TTF Inconsolata" "ttf-inconsolata"
+package_install "Terminus Font" "terminus-font"
+package_install "Cantarell Fonts" "cantarell-fonts"
+package_install "Adobe Source Sans Pro Fonts" "adobe-source-sans-pro-fonts"
 
 # Office
 # yay_install "Microsoft Office Online" "ms-office-online"
@@ -125,7 +131,10 @@ execute \
     "Add rodolphe to lp group"
 
 # Drivers Epson XP-700
-yay_install "Drivers Epson XP-700" "yay -S epson-inkjet-printer-201208w"
+yay_install "Drivers Epson XP-700" "epson-inkjet-printer-201208w"
+
+# Themes
+yay_install "Themes" "numix-gtk-theme numix-frost-themes numix-circle-icon-theme-git arc-gtk-theme materia-gtk-theme paper-icon-theme papirus-icon-theme"
 
 execute \
     "sudo systemctl enable avahi-daemon" \
