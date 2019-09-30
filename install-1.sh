@@ -304,8 +304,8 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
 
 sudo sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/nvme0n1p6:cryptlvm:allow-discards"/g' /etc/default/grub
 
-mkdir -p /mnt/windows
-mount /dev/nvme0n1p4 /mnt/windows
+#mkdir -p /mnt/windows
+#mount /dev/nvme0n1p4 /mnt/windows
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
