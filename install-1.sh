@@ -409,6 +409,45 @@ clear
 
 
 
+echo "################################################################################"
+
+echo "### Add user ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+
+useradd -m -g wheel -c 'Rodolphe Stoclin' rodolphe
+passwd rodolphe
+
+
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Root access ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+
+pacman -S --noconfirm --needed --asdeps sudo
+
+sed -i "s/# %wheel ALL=(ALL)/%wheel ALL=(ALL)/g" /etc/sudoers
+
+
+
 echo "######################################################################################"
 
 echo "### Installation completed, please reboot when ready and proceed with install-2.sh ###"
