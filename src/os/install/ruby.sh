@@ -1,7 +1,6 @@
 #!/bin/bash
 
 declare -r RUBY_VERSION="2.5.5"
-declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.bash.local"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
