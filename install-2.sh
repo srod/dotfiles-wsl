@@ -147,8 +147,8 @@ echo "##########################################################################
 
 
 
-localectl set-keymap fr
-localectl set-x11-keymap fr
+sudo localectl set-keymap fr
+sudo localectl set-x11-keymap fr
 
 
 
