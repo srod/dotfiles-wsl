@@ -66,40 +66,6 @@ clear
 
 echo "################################################################################"
 
-echo "### Installing and setting up printers ###"
-
-echo "################################################################################"
-
-
-
-sleep 2
-
-
-
-sudo pacman -S --noconfirm --needed --asdeps cups cups-pdf ghostscript gsfonts gutenprint gtk3-print-backends libcups system-config-printer
-
-sudo gpasswd -a rodolphe lp
-
-sudo systemctl enable avahi-daemon
-
-sudo systemctl start avahi-daemon
-
-sudo systemctl enable avahi-dnsconfd
-
-sudo systemctl start avahi-dnsconfd
-
-sudo systemctl enable org.cups.cupsd
-
-sudo systemctl start org.cups.cupsd
-
-
-
-clear
-
-
-
-echo "################################################################################"
-
 echo "### Install and setup display manager and desktop ###"
 
 echo "################################################################################"
@@ -139,9 +105,11 @@ case $case in
 
 echo "You selected KDE Plasma"
 
-sudo pacman -S --noconfirm --needed --asdeps plasma-meta  kde-applications-meta sddm
+sudo pacman -S --noconfirm --needed --asdeps plasma-meta kde-applications-meta sddm
 
 sudo systemctl enable sddm
+
+sudo pacman -S --noconfirm --needed --asdeps packagekit-qt5 kdenetwork-filesharing kdeconnect
 
 yay -S --noconfirm --needed --asdeps plasma-thunderbolt-git
 
@@ -157,10 +125,31 @@ sudo pacman -S --noconfirm --needed --asdeps xfce4 xfce4-goodies lightdm
 
 sudo systemctl enable lightdm
 
+sudo pacman -S --noconfirm --needed --asdeps xarchiver
+
+yay -S --noconfirm --needed --asdeps mugshot
+
 
 ;;
 
 esac
+
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Set locale X11 ###"
+
+echo "################################################################################"
+
+
+
+localectl set-keymap fr
+localectl set-x11-keymap fr
+
 
 
 clear
@@ -176,8 +165,6 @@ echo "##########################################################################
 
 
 sudo pacman -S --noconfirm --needed --asdeps gvfs-afc gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb
-
-yay -S --noconfirm --needed --asdeps mugshot
 
 
 

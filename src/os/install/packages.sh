@@ -10,7 +10,6 @@ package_install "Nmap" "nmap"
 package_install "Prettyping" "prettyping"
 package_install "Tcpdump" "tcpdump"
 package_install "Vim" "vim"
-package_uninstall "Vi" "vi"
 execute \
     "sudo systemctl enable systemd-resolved" \
     "Enable systemd-resolved"
@@ -18,7 +17,6 @@ package_install "Java" "jre-openjdk-headless"
 package_install "Diff so Fancy" "diff-so-fancy"
 yay_install "Extfat" "sdfat-dkms"
 yay_install "Exfat utils" "exfat-utils-nofuse"
-package_install "Discover backend" "packagekit-qt5"
 package_install "Xclip" "xclip"
 package_install "Neofetch" "neofetch"
 package_install "Htop" "htop"
@@ -35,20 +33,12 @@ print_in_blue "\n   Packages - Network\n\n"
 package_install "OpenSSH" "openssh"
 package_install "Bind Tools" "bind-tools"
 package_install "Network Manager Openvpn" "networkmanager-openvpn"
-package_install "kdenetwork-filesharing" "kdenetwork-filesharing"
 yay_install "samba-mounter-git" "samba-mounter-git"
 package_install "cifs-utils" "cifs-utils"
-# package_install "SMB4K" "smb4k"
 execute \
     "sudo rm /etc/krb5.conf" \
     "Optimize samba"
 package_install "Google Drive" "kio-gdrive"
-package_install "KDE Connect" "kdeconnect"
-
-# YAY
-print_in_blue "\n   Packages - YAY\n\n"
-package_install_from_git "YAY" "yay"
-yay_install "YAY" "yay"
 
 # Browsers
 print_in_blue "\n   Packages - Browsers\n\n"
@@ -57,9 +47,9 @@ package_install "Chromium" "chromium"
 package_install "Firefox" "firefox"
 
 # Set Brave as default browser
-execute \
-    "xdg-settings set default-web-browser brave-bin.desktop" \
-    "Set Brave as default browser"
+#execute \
+#    "xdg-settings set default-web-browser brave-bin.desktop" \
+#    "Set Brave as default browser"
 
 # Mail
 print_in_blue "\n   Packages - Mail\n\n"
@@ -96,6 +86,7 @@ execute \
 package_install "Meld" "meld"
 package_install "Unrar" "unrar"
 package_install "PDF Arranger" "pdfarranger"
+yay_install "Moneydance" "moneydance"
 
 # Videos
 print_in_blue "\n   Packages - Videos\n\n"
@@ -121,6 +112,7 @@ package_install "Cantarell Fonts" "cantarell-fonts"
 package_install "Adobe Source Sans Pro Fonts" "adobe-source-sans-pro-fonts"
 
 # Office
+package_install "Libre Office" "libreoffice-fresh libreoffice-fresh-fr"
 # yay_install "Microsoft Office Online" "ms-office-online"
 
 # Printers
@@ -132,9 +124,6 @@ execute \
 
 # Drivers Epson XP-700
 yay_install "Drivers Epson XP-700" "epson-inkjet-printer-201208w"
-
-# Themes
-yay_install "Themes" "numix-gtk-theme numix-frost-themes numix-circle-icon-theme-git arc-gtk-theme materia-gtk-theme paper-icon-theme papirus-icon-theme"
 
 execute \
     "sudo systemctl enable avahi-daemon" \
@@ -159,6 +148,9 @@ execute \
 execute \
     "sudo systemctl start org.cups.cupsd" \
     "Enable printer service"
+
+# Themes
+yay_install "Themes" "numix-gtk-theme numix-frost-themes numix-circle-icon-theme-git arc-gtk-theme materia-gtk-theme paper-icon-theme papirus-icon-theme"
 
 # YARN
 if [ -d "$HOME/.nvm" ]; then

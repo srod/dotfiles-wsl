@@ -303,7 +303,7 @@ yay_install() {
             print_success "$FORMULA_READABLE_NAME"
         else
             execute \
-                "yay -S --noconfirm --needed $FORMULA" \
+                "yay -S --noconfirm --needed --asdeps $FORMULA" \
                 "$FORMULA_READABLE_NAME"
         fi
     fi

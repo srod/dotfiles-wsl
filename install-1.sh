@@ -384,7 +384,7 @@ echo "##########################################################################
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-cg-toolkit nvidia-settings nvidia-utils opencl-nvidia ffnvcodec-headers
+sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-settings nvidia-utils
 
 
 
@@ -394,24 +394,7 @@ clear
 
 echo "################################################################################"
 
-echo "### Set locale X11 ###"
-
-echo "################################################################################"
-
-
-
-localectl set-keymap fr
-#localectl set-x11-keymap fr
-
-
-
-clear
-
-
-
-echo "################################################################################"
-
-echo "### Add user ###"
+echo "### Add user rodolphe ###"
 
 echo "################################################################################"
 

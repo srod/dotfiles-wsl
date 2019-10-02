@@ -160,11 +160,7 @@ main() {
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     source ./install/main.sh
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    #source preferences/main.sh
-
+    
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     source ./set_ssh_key.sh

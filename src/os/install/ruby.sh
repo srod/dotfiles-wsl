@@ -1,6 +1,7 @@
 #!/bin/bash
 
 declare -r RUBY_VERSION="2.5.5"
+declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.bash.local"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -10,6 +11,7 @@ install_ruby() {
     yay_install "Ruby-build" "ruby-build"
     execute "rbenv install '$RUBY_VERSION'" "Install"
     execute "rbenv global '$RUBY_VERSION'" "Set global '$RUBY_VERSION'"
+    execute ". $LOCAL_SHELL_CONFIG_FILE" "Load env"
     execute "gem update --system" "Update system"
     execute "gem update" "Update"
 
