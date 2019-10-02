@@ -22,9 +22,8 @@ create_symlinks() {
 
     for i in "${FILES_TO_SYMLINK[@]}"; do
 
-        sourceFile="$(pwd)/src/$i"
+        sourceFile="$DOTFILES/src/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
-
         do_symlink "$sourceFile" "$targetFile"
 
     done
