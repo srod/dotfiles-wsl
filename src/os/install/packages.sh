@@ -152,6 +152,12 @@ execute \
 # Themes
 yay_install "Themes" "numix-gtk-theme numix-frost-themes numix-circle-icon-theme-git arc-gtk-theme materia-gtk-theme paper-icon-theme papirus-icon-theme"
 
+# OS Prober
+package_install "OS Prober" "os-prober"
+execute \
+    "sudo os-prober" \
+    "Enable windows partition to grub"
+
 # YARN
 if [ -d "$HOME/.nvm" ]; then
     print_in_blue "\n   Packages - Node\n\n"

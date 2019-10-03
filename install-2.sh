@@ -121,11 +121,11 @@ yay -S --noconfirm --needed --asdeps plasma-thunderbolt-git
 
 echo "You selected XFCE4"
 
-sudo pacman -S --noconfirm --needed --asdeps xfce4 xfce4-goodies lightdm
+sudo pacman -S --noconfirm --needed --asdeps xfce4 xfce4-goodies lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 
 sudo systemctl enable lightdm
 
-sudo pacman -S --noconfirm --needed --asdeps xarchiver
+sudo pacman -S --noconfirm --needed --asdeps xarchiver network-manager-applet file-roller galculator
 
 yay -S --noconfirm --needed --asdeps mugshot
 
@@ -165,6 +165,26 @@ echo "##########################################################################
 
 
 sudo pacman -S --noconfirm --needed --asdeps gvfs-afc gvfs-google gvfs-gphoto2 gvfs-mtp gvfs-nfs gvfs-smb
+
+
+
+clear
+
+
+
+echo "################################################################################"
+
+echo "### Setup user dirs ###"
+
+echo "################################################################################"
+
+
+
+sudo pacman -S --noconfirm --needed --asdeps xdg-user-dirs xdg-user-dirs-gtk
+
+xdg-user-dirs-update
+
+xdg-user-dirs-gtk-update
 
 
 
