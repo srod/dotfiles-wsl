@@ -87,10 +87,12 @@ package_install "Meld" "meld"
 package_install "Unrar" "unrar"
 package_install "PDF Arranger" "pdfarranger"
 yay_install "Moneydance" "moneydance"
+package_install "Youtube dl" "youtube-dl"
 
 # Videos
 print_in_blue "\n   Packages - Videos\n\n"
 package_install "VLC" "vlc"
+package_install "Shotcut" "shotcut"
 
 # Fonts
 print_in_blue "\n   Packages - Fonts\n\n"
