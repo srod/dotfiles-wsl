@@ -113,6 +113,8 @@ sudo pacman -S --noconfirm --needed --asdeps packagekit-qt5 kdenetwork-fileshari
 
 yay -S --noconfirm --needed --asdeps plasma-thunderbolt-git
 
+yay -S --noconfirm --needed --asdeps samba-mounter-git
+
 
 ;;
 

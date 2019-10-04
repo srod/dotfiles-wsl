@@ -33,7 +33,6 @@ print_in_blue "\n   Packages - Network\n\n"
 package_install "OpenSSH" "openssh"
 package_install "Bind Tools" "bind-tools"
 package_install "Network Manager Openvpn" "networkmanager-openvpn"
-yay_install "samba-mounter-git" "samba-mounter-git"
 package_install "cifs-utils" "cifs-utils"
 execute \
     "sudo rm /etc/krb5.conf" \
