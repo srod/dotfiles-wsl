@@ -88,6 +88,7 @@ package_install "Unrar" "unrar"
 package_install "PDF Arranger" "pdfarranger"
 yay_install "Moneydance" "moneydance"
 package_install "Youtube dl" "youtube-dl"
+package_install "Xreader" "xreader"
 
 # Videos
 print_in_blue "\n   Packages - Videos\n\n"
