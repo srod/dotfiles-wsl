@@ -94,6 +94,7 @@ package_install "Youtube dl" "youtube-dl"
 print_in_blue "\n   Packages - Videos\n\n"
 package_install "VLC" "vlc"
 package_install "Shotcut" "shotcut"
+package_install "Kdenlive" "kdenlive"
 
 # Fonts
 print_in_blue "\n   Packages - Fonts\n\n"
