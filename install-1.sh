@@ -40,11 +40,11 @@ echo "You have "$nc" cores."
 
 echo "Changing the makeflags for "$nc" cores."
 
-sudo sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
+sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
 
 echo "Changing the compression settings for "$nc" cores."
 
-sudo sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
+sed -i "s/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -T $nc -z -)/g" /etc/makepkg.conf
 
 
 
@@ -66,9 +66,9 @@ sleep 2
 
 
 
-sudo pacman -S reflector --noconfirm --needed --asdeps
+pacman -S reflector --noconfirm --needed --asdeps
 
-sudo reflector --latest 100 -p https --country France --sort rate --save /etc/pacman.d/mirrorlist
+reflector --latest 100 -p https --country France --sort rate --save /etc/pacman.d/mirrorlist
 
 clear
 
@@ -84,9 +84,9 @@ echo "##########################################################################
 
 echo "Refreshing software repo keys, this will take a while (recommended)"
 
-sudo pacman-key --refresh-keys
+pacman-key --refresh-keys
 
-sudo pacman -S --noconfirm --needed --asdeps git wget linux-headers
+pacman -S --noconfirm --needed --asdeps git wget linux-headers
 
 clear
 
@@ -205,7 +205,7 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps pulseaudio pulseaudio-alsa pavucontrol alsa-utils alsa-plugins alsa-lib alsa-firmware gstreamer gst-plugins-good gst-plugins-bad gst-plugins-base gst-plugins-ugly volumeicon playerctl
+pacman -S --noconfirm --needed --asdeps pulseaudio pulseaudio-alsa pavucontrol alsa-utils alsa-plugins alsa-lib alsa-firmware gstreamer gst-plugins-good gst-plugins-bad gst-plugins-base gst-plugins-ugly volumeicon playerctl
 
 clear
 
@@ -223,13 +223,13 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps pulseaudio-bluetooth bluez bluez-libs bluez-utils blueberry
+pacman -S --noconfirm --needed --asdeps pulseaudio-bluetooth bluez bluez-libs bluez-utils blueberry
 
-sudo systemctl enable bluetooth.service
+systemctl enable bluetooth.service
 
-sudo systemctl start bluetooth.service
+systemctl start bluetooth.service
 
-sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
+sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
 
 clear
 
@@ -249,15 +249,15 @@ sleep 2
 
 # Access samba share windows
 
-sudo pacman -S --noconfirm --needed --asdeps gvfs-smb avahi
+pacman -S --noconfirm --needed --asdeps gvfs-smb avahi
 
-sudo systemctl enable avahi-daemon.service
+systemctl enable avahi-daemon.service
 
-sudo systemctl start avahi-daemon.service
+systemctl start avahi-daemon.service
 
-sudo pacman -S --noconfirm --needed --asdeps nss-mdns
+pacman -S --noconfirm --needed --asdeps nss-mdns
 
-sudo sed -i 's/dns/mdns dns wins/g' /etc/nsswitch.conf
+sed -i 's/dns/mdns dns wins/g' /etc/nsswitch.conf
 
 
 
@@ -277,7 +277,7 @@ sleep 2
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps intel-ucode
+pacman -S --noconfirm --needed --asdeps intel-ucode
 
 clear
 
@@ -294,15 +294,15 @@ echo "##########################################################################
 sleep 2
 
 
-sudo sed -i 's/MODULES=()/MODULES=(ext4)/g' /etc/mkinitcpio.conf
-sudo sed -i 's/HOOKS=(base udev autodetect modconf block filesystems/HOOKS=(base udev autodetect modconf block filesystems encrypt lvm2/g' /etc/mkinitcpio.conf
+sed -i 's/MODULES=()/MODULES=(ext4)/g' /etc/mkinitcpio.conf
+sed -i 's/HOOKS=(base udev autodetect modconf block filesystems/HOOKS=(base udev autodetect modconf block filesystems encrypt lvm2/g' /etc/mkinitcpio.conf
 
 mkinitcpio -p linux
 
-sudo pacman -S --noconfirm --needed --asdeps grub efibootmgr
+pacman -S --noconfirm --needed --asdeps grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
 
-sudo sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/nvme0n1p6:cryptlvm:allow-discards"/g' /etc/default/grub
+sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/nvme0n1p6:cryptlvm:allow-discards"/g' /etc/default/grub
 
 #mkdir -p /mnt/windows
 #mount /dev/nvme0n1p4 /mnt/windows
@@ -384,7 +384,7 @@ echo "##########################################################################
 
 
 
-sudo pacman -S --noconfirm --needed --asdeps nvidia nvidia-settings nvidia-utils
+pacman -S --noconfirm --needed --asdeps nvidia nvidia-settings nvidia-utils
 
 
 
@@ -428,6 +428,24 @@ sleep 2
 pacman -S --noconfirm --needed --asdeps sudo
 
 sed -i "s/# %wheel ALL=(ALL)/%wheel ALL=(ALL)/g" /etc/sudoers
+
+
+
+echo "################################################################################"
+
+echo "### Swap ###"
+
+echo "################################################################################"
+
+
+
+sleep 2
+
+
+
+pacman -S --noconfirm --needed --asdeps systemd-swap
+sed -i "s/swapfc_enabled=0/swapfc_enabled=1/g" /etc/systemd/swap.conf
+systemctl enable systemd-swap
 
 
 
