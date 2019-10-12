@@ -9,7 +9,7 @@ add_rbenv_configs() {
 
     declare -r CONFIGS="
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Node Version Manager
+# Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 "
