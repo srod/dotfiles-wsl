@@ -27,9 +27,9 @@ eval "$(rbenv init -)"
 
 install_ruby() {
 
-    sudo apt update
-    sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
-    curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+    execute "sudo apt update" "Update system"
+    execute "sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev" "Install dependencies"
+    execute "curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -" "Install rbenc"
 
     add_rbenv_configs()
 
