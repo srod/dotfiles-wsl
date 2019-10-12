@@ -4,8 +4,8 @@ main() {
 
     print_in_blue "\n   ZSH\n\n"
 
-    sudo apt install -y zsh
-    sudo usermod -s /usr/bin/zsh $(whoami)
+    package_install "ZSH" "zsh"
+    execute "sudo usermod -s /usr/bin/zsh $(whoami)" "Change default shell"
 
 }
 
