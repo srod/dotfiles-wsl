@@ -106,7 +106,7 @@ update_system() {
     ask_for_confirmation "Your system must be updated first, do you want to?"
     if answer_is_yes; then
         execute \
-            "sudo apt-get update && sudo apt-get upgrade" "Checking updates..."
+            "sudo apt update 2>/dev/null && sudo apt upgrade 2>/dev/null" "Checking updates..."
     fi
 
 }
