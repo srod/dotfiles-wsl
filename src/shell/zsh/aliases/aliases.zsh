@@ -30,11 +30,11 @@ alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
 
 # Work
 alias root.rod="/mnt/c/Users/rodolphe"
-alias work="cd $root.rod/OneDrive/www"
-alias work.2clics="cd $root.rod/OneDrive/www/www.2clics.net"
-alias work.minify="cd $root.rod/OneDrive/www/minify.2clics.net"
-alias work.node-minify="cd $root.rod/OneDrive/www/github/node-minify"
-alias work.node-version="cd $root.rod/OneDrive/www/github/node-version"
+alias work="cd ${root.rod}/OneDrive/www"
+alias work.2clics="cd ${root.rod}/OneDrive/www/www.2clics.net"
+alias work.minify="cd ${root.rod}/OneDrive/www/minify.2clics.net"
+alias work.node-minify="cd ${root.rod}/OneDrive/www/github/node-minify"
+alias work.node-version="cd ${root.rod}/OneDrive/www/github/node-version"
 
 # Network
 alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
