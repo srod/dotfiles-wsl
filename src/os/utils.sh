@@ -40,21 +40,6 @@ ask_for_sudo() {
 
 }
 
-package_install_from_git() {
-
-    declare -r FORMULA="$2"
-    declare -r FORMULA_READABLE_NAME="$1"
-
-    if yay -Q "$FORMULA" &> /dev/null; then
-        print_success "$FORMULA_READABLE_NAME"
-    else
-        execute \
-            "cd /tmp && rm -rf $FORMULA && git clone --quiet https://aur.archlinux.org/$FORMULA.git && cd $FORMULA && makepkg -si" \
-            "$FORMULA_READABLE_NAME"
-    fi
-
-}
-
 package_install() {
 
     declare -r FORMULA="$2"
@@ -65,11 +50,11 @@ package_install() {
     # Install the specified formula.
 
     if [ -n "$FORMULA" ]; then
-        if pacman -Q "$FORMULA" &> /dev/null; then
+        if dpkg -l | grep "$FORMULA" &> /dev/null; then
             print_success "$FORMULA_READABLE_NAME"
         else
             execute \
-                "sudo pacman -S --noconfirm --needed $FORMULA" \
+                "sudo apt install -y $FORMULA" \
                 "$FORMULA_READABLE_NAME"
         fi
     fi
@@ -85,7 +70,7 @@ package_uninstall() {
 
     if [ -n "$FORMULA" ]; then
         execute \
-            "sudo pacman -Rs $FORMULA" \
+            "sudo apt remove -y $FORMULA" \
             "$FORMULA_READABLE_NAME"
     fi
 
@@ -290,22 +275,5 @@ show_spinner() {
         fi
 
     done
-
-}
-
-yay_install() {
-
-    declare -r FORMULA="$2"
-    declare -r FORMULA_READABLE_NAME="$1"
-
-    if [ -n "$FORMULA" ]; then
-        if yay -Q "$FORMULA" &> /dev/null; then
-            print_success "$FORMULA_READABLE_NAME"
-        else
-            execute \
-                "yay -S --noconfirm --needed --asdeps $FORMULA" \
-                "$FORMULA_READABLE_NAME"
-        fi
-    fi
 
 }

@@ -1,16 +1,41 @@
 #!/bin/bash
 
+#declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.bash.local"
 declare -r RUBY_VERSION="2.5.5"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+add_rbenv_configs() {
+
+    declare -r CONFIGS="
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Node Version Manager
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+"
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    execute \
+        "printf '%s' '$CONFIGS' >> $LOCAL_SHELL_CONFIG_FILE \
+            && . $LOCAL_SHELL_CONFIG_FILE" \
+        "rbenv (update $LOCAL_SHELL_CONFIG_FILE)"
+
+}
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 install_ruby() {
 
-    yay_install "Rbenv" "rbenv"
-    yay_install "Ruby-build" "ruby-build"
+    sudo apt update
+    sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
+    curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+
+    add_rbenv_configs()
+
     execute "rbenv install '$RUBY_VERSION'" "Install"
     execute "rbenv global '$RUBY_VERSION'" "Set global '$RUBY_VERSION'"
-    execute ". $LOCAL_SHELL_CONFIG_FILE" "Load env"
+    # execute ". $LOCAL_SHELL_CONFIG_FILE" "Load env"
     execute "gem update --system" "Update system"
     execute "gem update" "Update"
 

@@ -4,8 +4,8 @@ main() {
 
     print_in_blue "\n   ZSH\n\n"
 
-    sudo pacman -S --noconfirm --needed --asdeps zsh
-    sudo usermod -s /usr/bin/zsh $(whoami)
+    sudo apt install -y zsh
+    #sudo usermod -s /usr/bin/zsh $(whoami)
 
 }
 
