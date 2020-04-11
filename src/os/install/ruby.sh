@@ -1,43 +1,29 @@
 #!/bin/bash
 
-#declare -r LOCAL_SHELL_CONFIG_FILE="$HOME/.bash.local"
-declare -r RUBY_VERSION="2.5.5"
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-add_rbenv_configs() {
-
-    declare -r CONFIGS="
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-"
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    execute \
-        "printf '%s' '$CONFIGS' >> $LOCAL_SHELL_CONFIG_FILE \
-            && . $LOCAL_SHELL_CONFIG_FILE" \
-        "rbenv (update $LOCAL_SHELL_CONFIG_FILE)"
-
-}
+declare -r RUBY_VERSION="2.7.0"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 install_ruby() {
 
-    execute "sudo apt update" "Update system"
-    execute "sudo apt install -y git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev" "Install dependencies"
-    execute "curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -" "Install rbenc"
+    sudo apt-get install -y zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
 
-    add_rbenv_configs()
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    cd ~/.rbenv && src/configure && make -C src && cd - || return
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
-    execute "rbenv install '$RUBY_VERSION'" "Install"
-    execute "rbenv global '$RUBY_VERSION'" "Set global '$RUBY_VERSION'"
-    # execute ". $LOCAL_SHELL_CONFIG_FILE" "Load env"
-    execute "gem update --system" "Update system"
-    execute "gem update" "Update"
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+    export PATH="$HOME/.rbenv/shims:$PATH"
+    eval "$(rbenv init -)"
+
+    rbenv install $RUBY_VERSION
+    rbenv global $RUBY_VERSION
+
+    gem update --system
+    gem update
+
+    cd $DOTFILES/src/os
 
 }
 

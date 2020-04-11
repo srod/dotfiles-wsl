@@ -2,8 +2,7 @@
 
 install_gems() {
 
-    execute "gem install sass" "SASS"
-    execute "gem install git-up" "git-up"
+    gem install git-up
 
 }
 
