@@ -5,6 +5,9 @@ print_in_blue "\n   Packages - System\n\n"
 sudo apt install -y git
 sudo apt install -y vim
 sudo apt install -y default-jre
+sudo apt install -y xclip
+sudo apt install -y neofetch
+sudo apt install -y htop
 
 # YARN
 if [ -d "$HOME/.nvm" ]; then

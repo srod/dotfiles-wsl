@@ -99,16 +99,6 @@
 
     empty = "!git commit --allow-empty -m 'chore(deploy): trigger build with empty commit'"
 
-[diff]
-    # Detect copies as well as renames
-    renames = copies
-    # external = git-external-patdiff
-    tool = Code
-
-[diff "bin"]
-    # Use `hexdump` to diff binary files
-    textconv = hexdump -v -C
-
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 1
@@ -135,24 +125,20 @@
 [git-up "rebase"]
     auto = false
 
-[mergetool "Kaleidoscope"]
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[mergetool "Code"]
+    cmd = code --wait $MERGED
     trustexitcode = true
 
 [merge]
     # Include summaries of merged commits in newly created merge commit messages
     log = true
-
-    tool = Kaleidoscope
-
-[difftool "Kaleidoscope"]
-    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    tool = Code
 
 [difftool "Code"]
     cmd = code --wait --diff $LOCAL $REMOTE
 
-[difftool]
-    prompt = false
-
-[mergetool]
-    prompt = false
+[diff]
+    # Detect copies as well as renames
+    renames = copies
+    # external = git-external-patdiff
+    tool = Code
