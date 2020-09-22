@@ -8,3 +8,6 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR='Code'
 
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+
+# GPG sign
+export GPG_TTY=$(tty)
