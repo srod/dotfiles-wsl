@@ -65,13 +65,13 @@ download_dotfiles() {
 
     if [ ! -d "$DOTFILES" ]; then
         execute \
-            "git clone --quiet --recurse-submodules -j8 $DOTFILES_ORIGIN $DOTFILES" "Cloning in '$DOTFILES'"
+            "git clone --branch feature/centos --quiet --recurse-submodules -j8 $DOTFILES_ORIGIN $DOTFILES" "Cloning in '$DOTFILES'"
     else
         ask_for_confirmation "'$DOTFILES' already exists, do you want to delete it?"
         if answer_is_yes; then
             rm -Rf $DOTFILES
             execute \
-                "git clone --quiet --recurse-submodules -j8 $DOTFILES_ORIGIN $DOTFILES" "Cloning in '$DOTFILES'"
+                "git clone --branch feature/centos --quiet --recurse-submodules -j8 $DOTFILES_ORIGIN $DOTFILES" "Cloning in '$DOTFILES'"
         fi
     fi
 
@@ -106,7 +106,7 @@ update_system() {
     ask_for_confirmation "Your system must be updated first, do you want to?"
     if answer_is_yes; then
         execute \
-            "sudo apt update && sudo apt upgrade" "Checking updates..."
+            "sudo dnf upgrade" "Checking updates..."
     fi
 
 }

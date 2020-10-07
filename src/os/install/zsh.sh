@@ -4,7 +4,7 @@ main() {
 
     print_in_blue "\n   ZSH\n\n"
 
-    sudo apt install -y zsh
+    sudo dnf install -y zsh util-linux-user
     chsh -s $(which zsh)
 
 }

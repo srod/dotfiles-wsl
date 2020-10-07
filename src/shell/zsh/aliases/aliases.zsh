@@ -20,9 +20,9 @@ alias grep="grep --color=auto"
 alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
 
 # Update
-alias aptup="sudo apt-get update; sudo apt-get upgrade;"
+alias dnfup="sudo dnf upgrade"
 alias npmup="npm -g update; npm install -g npm"
-alias update="aptup; npmup"
+alias update="dnfup; npmup"
 
 # Work
 alias root_rod="/mnt/c/Users/rodol/Insync/rodolphe.stoclin@outlook.fr/OneDrive"
