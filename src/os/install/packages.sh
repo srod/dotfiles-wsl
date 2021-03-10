@@ -5,7 +5,6 @@ print_in_blue "\n   Packages - System\n\n"
 sudo sh -c 'echo "fastestmirror=True" >> /etc/dnf/dnf.conf'
 sudo sh -c 'echo "defaultyes=True" >> /etc/dnf/dnf.conf'
 sudo dnf distro-sync
-sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 sudo dnf install -y sudo nano vim wget tar net-tools curl htop neofetch xclip
 sudo dnf install -y java-latest-openjdk-headless
 

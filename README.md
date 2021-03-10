@@ -4,4 +4,4 @@ Personal dotfiles based on https://github.com/alrra/dotfiles
 
 ## Setup
 
-`bash -c "$(curl -LsS https://raw.githubusercontent.com/srod/dotfiles-wsl/feature/centos/setup.sh)"`
+`bash -c "$(curl -LsS https://raw.githubusercontent.com/srod/dotfiles-wsl/feature/fedora/setup.sh)"`
