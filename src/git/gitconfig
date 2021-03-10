@@ -99,6 +99,12 @@
 
     empty = "!git commit --allow-empty -m 'chore(deploy): trigger build with empty commit'"
 
+    pr = "!f() { git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
+    pr-clean = "!git checkout master ; git for-each-ref refs/heads/pr/* --format=\"%(refname)\" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
+
+    up = pull --rebase --autostash
+
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 1
