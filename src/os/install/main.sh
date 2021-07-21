@@ -6,4 +6,3 @@ source ./install/zsh.sh
 source ./install/nvm.sh
 source ./install/packages.sh
 source ./install/npm.sh
-source ./install/cleanup.sh
