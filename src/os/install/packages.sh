@@ -7,6 +7,8 @@ sudo apt install -y vim
 sudo apt install -y default-jre
 sudo apt install -y neofetch
 sudo apt install -y htop
+sudo apt install -y bat
+sudo apt install -y prettyping
 
 # YARN
 if [ -d "$HOME/.nvm" ]; then

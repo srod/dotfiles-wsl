@@ -5,14 +5,12 @@ alias rm="rm -i"
 alias cp="cp -i"
 alias mv="mv -i"
 alias vi="/usr/bin/vim"
+alias cat="batcat"
 
 # Navigation
 alias dotfiles="cd $DOTFILES"
 
 # Maintenance
-alias lsdu="du -csh $(pwd)"
-alias check-space="du -h ~/ | grep '^[0-9]*.[0-9]G'"
-alias sizedir="du -sh */ | sort -h"
 alias pid="ps x | grep -i $1"
 alias grep="grep --color=auto"
 alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
@@ -26,6 +24,8 @@ alias update="aptup; npmup"
 alias network.ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias network.ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 alias network.speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python - --server 24215"
+alias network.ping='prettyping --nolegend'
+alias ping=network.ping
 
 # Utils
 alias clean.ds_store="find . -type f -name '*.DS_Store' -ls -delete"
