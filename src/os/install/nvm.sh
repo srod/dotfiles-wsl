@@ -8,7 +8,7 @@ declare -r NVM_GIT_REPO_URL="https://github.com/nvm-sh/nvm"
 install_node() {
 
     nvm install $1
-    npm install npm@7 -g
+    npm install npm@8 -g
 
 }
 

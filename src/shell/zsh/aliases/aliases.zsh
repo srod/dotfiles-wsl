@@ -13,7 +13,7 @@ alias dotfiles="cd $DOTFILES"
 # Maintenance
 alias pid="ps x | grep -i $1"
 alias grep="grep --color=auto"
-alias aliases="subl $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
+alias aliases="code $DOTFILES/src/shell/zsh/aliases/aliases.zsh"
 
 # Update
 alias aptup="sudo apt-get update; sudo apt-get upgrade;"
